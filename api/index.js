@@ -8,8 +8,8 @@ const fs = require("node:fs")
 
 require('dotenv').config()
 
-// const OpenAI = require("openai");
-// const openai = new OpenAI();
+const OpenAI = require("openai");
+const openai = new OpenAI();
 
 let all_words = []
 let boomer_words = []
@@ -31,7 +31,6 @@ app.get('/', (req, res) => {
 // Duo Funcs
 app.get("/get_lesson", async (req, res) => {
     const target = genz_words[Math.floor(Math.random() * genz_words.length)]
-    // const target = genz_words[0]
     const correct = target["word"]
     let options = []
     do {
@@ -63,11 +62,33 @@ app.get("/get_card", async (req, res) => {
     for (let i = 0; i < 4; i++) {
         let target = genz_words[Math.floor(Math.random() * genz_words.length)];
         cards.push({ cardGenZ: target["word"], cardBoomer: target["normal_words"][Math.floor(Math.random() * target["normal_words"].length)] })
-
     }
-
     res.send(cards)
 })
+
+app.get("/conversation", async (req, res) => {
+    const target = genz_words[Math.floor(Math.random() * genz_words.length)]
+    console.log(target)
+    const target_word = target["word"]
+    const example_sentence = target["example"].replace("<span class=\"lesson-answer--hidden\">", "").replace("</span>", "")
+    const opening_statement_prompt = `I am trying to write a conversation back and fourth. Please give me an opening statement that would 
+    trigger a response that will include the word '${target_word}' in the traditional gen z meaning. Do not use any gen z language in this statement. A use of this in a sentence is  
+    '${example_sentence}'. Respond with just this statement, without any quote marks.`
+    const opening_statement = await getGPT(opening_statement_prompt)
+    console.log(opening_statement)
+
+    const prompt = `Propose 4 response sentences each using a different gen z word to the statement ${opening_statement}.
+    Make the responses be relevant to the statement, however using a different gen z word (that may make the sentence not make sense) in each response.
+    Make sure one response use the word/phrase ${target_word} in response to the statement. The response should take the form {"response": response, "correct": true or false, "reasoning": reasoning}.
+    Respond with just the 4 responses, all separated by a , character.`
+    const raw = await getGPT(prompt)
+    const responses = JSON.parse(`[${raw}]`)
+    console.log(responses)
+
+    let result = {"initial": opening_statement, options: responses}
+    res.send(result)
+})
+
 
 app.get("/update_all_words", (req, res) => {
     fs.writeFile("./all_words.json", JSON.stringify(all_words), (err) => {console.error(err)})
@@ -76,18 +97,18 @@ app.get("/update_all_words", (req, res) => {
 
 
 
-// async function getGPT(message) {
-//     const completion = await openai.chat.completions.create({
-//         model: "gpt-4o-mini",
-//         messages: [
-//             {role: "system", content: "You are an assistant for a language learning app. You reply in a concise format."},
-//             {role: "user", content: message}
-//         ],
-//         store: true
-//     })
-//     // console.log(completion)
-//     return completion.choices[0].message.content
-// }
+async function getGPT(message) {
+    const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [
+            {role: "system", content: "You are an assistant for a language learning app. You reply in a concise format."},
+            {role: "user", content: message}
+        ],
+        store: true
+    })
+    // console.log(completion)
+    return completion.choices[0].message.content
+}
 //
 // function getPrompt(target_word){
 //     const data = fs.readFileSync("./prompt.txt", "utf8")
