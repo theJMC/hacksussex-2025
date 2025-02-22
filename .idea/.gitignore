@@ -3,3 +3,6 @@
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+/hs-2025.iml
+/modules.xml
+/vcs.xml
