@@ -2,13 +2,21 @@ const express = require('express')
 const app = express()
 const port = 3001
 
+const fs = require("node:fs")
+
 require('dotenv').config()
 
 const OpenAI = require("openai");
 const openai = new OpenAI();
 
-const boomer_words = require('./boomer_words.json')
+let boomer_words = []
 const genz_words = require('./genZ_words.json')
+for (let item of genz_words) {
+    for (let word of item["normal_words"]) {
+        boomer_words.push(word)
+        // console.log(word)
+    }
+}
 
 app.get('/', (req, res) => {
     res.send("Hello World");
@@ -16,35 +24,46 @@ app.get('/', (req, res) => {
 
 // Duo Funcs
 app.get("/get_lesson", async (req, res) => {
-    // pick target word from gen-z list
-    // get the answer and 5 other words from the boomer list
-    // send to frontend
-    const target_word = genz_words[Math.floor(Math.random() * genz_words.length)]
-    const msg = `The target word is ${target_word}, and it is used in the traditional Gen Z way. please choose 2 words from the list below, and 2 words that \
-    are not in the list, which are synonyms of the target word. You also need to provide a sentence where the target word is used. The options used should have one clear, correct word, which should also be used as the normal word in the format.
-    This normal word should come from the list of words in this prompt.
-    Please give the answer in the format \
-    {"options": ["word1, word2, word3, word4, word5, word6"], "sentence": the word used in a sentence, "correct_word": the normal word, "hint": a hint} \
-    The list of words is: ${boomer_words.join(", ")}`
-    const response = JSON.parse(await getGPT(msg))
-    const result = {"target_word": target_word, "options": response["options"],
-        "sentence": response["sentence"], "correct_word": response["correct_word"], "hint": response["hint"]}
+    const target = genz_words[Math.floor(Math.random() * genz_words.length)]
+    const correct = target["normal_words"][Math.floor(Math.random() * target["normal_words"].length)]
+    console.log(target["normal_words"])
+    const options = [
+        correct,
+        boomer_words[Math.floor(Math.random() * boomer_words.length)],
+        boomer_words[Math.floor(Math.random() * boomer_words.length)],
+        boomer_words[Math.floor(Math.random() * boomer_words.length)]
+    ]
+
+    let shuffled = options.sort(() => Math.random() - 0.5)
+
+    const result = {
+        "target_word": target["word"],
+        "options": shuffled,
+        "sentence": target["example"],
+        "correct_word": correct,
+        "hint": target["hint"]
+    }
     console.log(result)
     res.send(result)
 })
 
-async function getGPT(message) {
-    const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [
-            {role: "system", content: "You are an assistant for a language learning app. You reply in a concise format."},
-            {role: "user", content: message}
-        ],
-        store: true
-    })
-    // console.log(completion)
-    return completion.choices[0].message.content
-}
+// async function getGPT(message) {
+//     const completion = await openai.chat.completions.create({
+//         model: "gpt-4o-mini",
+//         messages: [
+//             {role: "system", content: "You are an assistant for a language learning app. You reply in a concise format."},
+//             {role: "user", content: message}
+//         ],
+//         store: true
+//     })
+//     // console.log(completion)
+//     return completion.choices[0].message.content
+// }
+//
+// function getPrompt(target_word){
+//     const data = fs.readFileSync("./prompt.txt", "utf8")
+//     return data.replace("${target_word}", target_word).replace("${boomer_words}", boomer_words.join(", "))
+// }
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

@@ -1,35 +1,200 @@
 [
-  "rizz",
-  "slay",
-  "bet",
-  "no cap",
-  "mid",
-  "based",
-  "touch grass",
-  "bussin",
-  "yeet",
-  "gyat",
-  "bop",
-  "sus",
-  "drip",
-  "ate",
-  "delulu",
-  "simp",
-  "skull 💀",
-  "goofy ahh",
-  "on god",
-  "ratio",
-  "L",
-  "W",
-  "NPC",
-  "caught in 4K",
-  "it's giving...",
-  "lowkey",
-  "highkey",
-  "vibe check",
-  "bruh moment",
-  "malding",
-  "yap",
-  "pressed",
-  "not me..."
+  {
+    "word": "rizz",
+    "normal_words": ["charm", "appeal", "flirtation"],
+    "hint": "Used to describe someone's ability to charm or attract others.",
+    "example": "He’s got crazy rizz; every time he talks, people swoon."
+  },
+  {
+    "word": "slay",
+    "normal_words": ["excel", "dominate", "succeed"],
+    "hint": "Refers to doing something extremely well or impressively.",
+    "example": "She absolutely slayed that presentation—everyone was impressed!"
+  },
+  {
+    "word": "bet",
+    "normal_words": ["okay", "sure", "agree"],
+    "hint": "A way to confirm or agree to something, often used casually.",
+    "example": "You down to go out tonight? Bet, see you at 8!"
+  },
+  {
+    "word": "no cap",
+    "normal_words": ["seriously", "honestly", "truthfully"],
+    "hint": "A phrase used to emphasize the truth or sincerity of what’s being said.",
+    "example": "That was the best burger I’ve ever had, no cap."
+  },
+  {
+    "word": "mid",
+    "normal_words": ["average", "mediocre", "unimpressive"],
+    "hint": "Used to describe something that is not impressive, just okay.",
+    "example": "That movie was so mid, I expected way more."
+  },
+  {
+    "word": "based",
+    "normal_words": ["authentic", "unapologetic", "confident"],
+    "hint": "Refers to someone who is confidently true to themselves, not influenced by others.",
+    "example": "He said pineapple belongs on pizza, and honestly, that’s pretty based."
+  },
+  {
+    "word": "touch grass",
+    "normal_words": ["get real", "calm down", "go outside"],
+    "hint": "A suggestion to take a break from screens and engage with the real world.",
+    "example": "Bro, you’ve been gaming all day, go touch grass."
+  },
+  {
+    "word": "bussin",
+    "normal_words": ["delicious", "amazing", "fantastic"],
+    "hint": "Used to describe something that tastes or feels really good.",
+    "example": "This pasta is bussin, I need the recipe!"
+  },
+  {
+    "word": "yeet",
+    "normal_words": ["toss", "throw", "discard"],
+    "hint": "To throw something with force or excitement, often used playfully.",
+    "example": "I yeeted my phone across the room when I saw that message."
+  },
+  {
+    "word": "gyat",
+    "normal_words": ["wow", "whoa", "impressive"],
+    "hint": "An exclamation used when something is surprising or impressive.",
+    "example": "GYAT! That was way too close!"
+  },
+  {
+    "word": "bop",
+    "normal_words": ["hit", "jam", "great song"],
+    "hint": "A term used for a catchy, enjoyable song.",
+    "example": "This song is such a bop, I can’t stop replaying it."
+  },
+  {
+    "word": "sus",
+    "normal_words": ["suspicious", "questionable", "dubious"],
+    "hint": "Short for suspicious, used when something feels off or untrustworthy.",
+    "example": "He was acting kinda sus when we asked where he was last night."
+  },
+  {
+    "word": "drip",
+    "normal_words": ["style", "fashion", "outfit"],
+    "hint": "Refers to someone's stylish or fashionable appearance, often related to clothes.",
+    "example": "Check out his fit—dude’s got mad drip!"
+  },
+  {
+    "word": "ate",
+    "normal_words": ["performed well", "excelled", "succeeded"],
+    "hint": "Used to describe someone doing something exceptionally well.",
+    "example": "She ate that dance routine and left no crumbs."
+  },
+  {
+    "word": "delulu",
+    "normal_words": ["unrealistic", "delusional", "wishful"],
+    "hint": "A playful way of saying someone is being overly optimistic or unrealistic.",
+    "example": "Thinking he’s gonna text back is so delulu of you."
+  },
+  {
+    "word": "simp",
+    "normal_words": ["obsessed", "overly devoted", "infatuated"],
+    "hint": "Refers to someone who is overly affectionate or devoted to another person, often in a way that seems excessive.",
+    "example": "He’s such a simp for her; he drops everything when she calls."
+  },
+  {
+    "word": "skull 💀",
+    "normal_words": ["hilarious", "laughing hard", "dead funny"],
+    "hint": "Used to express something extremely funny, as if it killed you with laughter.",
+    "example": "You really thought that was a good idea? Skull 💀."
+  },
+  {
+    "word": "goofy ahh",
+    "normal_words": ["ridiculous", "absurd", "silly"],
+    "hint": "Describes something that’s very silly or absurd, often in a humorous way.",
+    "example": "That was the most goofy ahh thing I’ve ever seen."
+  },
+  {
+    "word": "on god",
+    "normal_words": ["seriously", "for real", "I swear"],
+    "hint": "Used to emphasize sincerity or seriousness, often in a vow-like way.",
+    "example": "That test was way harder than expected, on god."
+  },
+  {
+    "word": "ratio",
+    "normal_words": ["outvoted", "overruled", "disliked"],
+    "hint": "Used to describe when a post or comment receives more negative responses than positive ones.",
+    "example": "L take, bro. Ratio."
+  },
+  {
+    "word": "L",
+    "normal_words": ["loss", "failure", "defeat"],
+    "hint": "Short for loss, used to indicate a failure or negative outcome.",
+    "example": "You forgot your keys again? L."
+  },
+  {
+    "word": "W",
+    "normal_words": ["win", "success", "victory"],
+    "hint": "Short for win, used to indicate a positive outcome or success.",
+    "example": "Got free tickets to the concert? That’s a W!"
+  },
+  {
+    "word": "NPC",
+    "normal_words": ["background character", "robotic", "unimportant"],
+    "hint": "Refers to someone who acts like a non-player character—meaning they’re unimportant or lack personality.",
+    "example": "Dude was just standing there not talking, straight NPC behavior."
+  },
+  {
+    "word": "caught in 4K",
+    "normal_words": ["exposed", "busted", "seen"],
+    "hint": "Refers to being caught doing something wrong, with clear evidence.",
+    "example": "You said you don’t like cake, but here’s a pic of you eating it—caught in 4K!"
+  },
+  {
+    "word": "it's giving...",
+    "normal_words": ["it feels like", "reminds me of", "has the vibe of"],
+    "hint": "Used when comparing something to a specific vibe or aesthetic.",
+    "example": "That outfit? It’s giving 2000s pop star."
+  },
+  {
+    "word": "lowkey",
+    "normal_words": ["kind of", "a little", "subtly"],
+    "hint": "Used to express a subtle or restrained level of something.",
+    "example": "I lowkey love pineapple on pizza, don’t tell anyone."
+  },
+  {
+    "word": "highkey",
+    "normal_words": ["definitely", "very", "strongly"],
+    "hint": "Used to express something strongly or openly.",
+    "example": "I highkey need a vacation right now."
+  },
+  {
+    "word": "vibe check",
+    "normal_words": ["mood assessment", "energy test", "feeling gauge"],
+    "hint": "Refers to assessing someone's energy or the mood of a situation.",
+    "example": "Walked into the party and instantly failed the vibe check."
+  },
+  {
+    "word": "bruh moment",
+    "normal_words": ["awkward", "frustrating", "disappointing"],
+    "hint": "Refers to a situation that’s frustrating or disappointing in a humorous way.",
+    "example": "I left my wallet at home… bruh moment."
+  },
+  {
+    "word": "malding",
+    "normal_words": ["angry", "frustrated", "irritated"],
+    "hint": "A blend of mad and balding, used when someone is very angry.",
+    "example": "He’s malding over that game loss, someone get him a stress ball."
+  },
+  {
+    "word": "yap",
+    "normal_words": ["ramble", "talk", "chatter"],
+    "hint": "To talk continuously, usually about trivial things.",
+    "example": "Bro won’t stop yapping about his new car."
+  },
+  {
+    "word": "pressed",
+    "normal_words": ["upset", "annoyed", "bothered"],
+    "hint": "To be irritated or upset about something.",
+    "example": "She’s still pressed about that argument from last week."
+  },
+  {
+    "word": "not me...",
+    "normal_words": ["I can relate", "oops", "that’s so me"],
+    "hint": "Used when admitting something relatable or embarrassing.",
+    "example": "Not me forgetting my own birthday 💀."
+  }
 ]
