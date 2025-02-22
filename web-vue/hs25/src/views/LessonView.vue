@@ -15,7 +15,7 @@
             <details class="lesson-hint"> <!-- For kinda hard + questions -->
               <summary>Hint</summary>
               <p>
-                This is a sentence that a Gen Z person might say to their friend.
+                {{ hint }}
               </p>
             </details>
           </div>
@@ -36,7 +36,8 @@
 import BrunoBlock from '@/components/BrunoBlock.vue';
 import Notification from '@/components/Notification.vue';
 import RichTextEditor from '@/components/RichTextEditor.vue';
-import defaultAnswers from '@/data/defaultAnswers.js';
+// import defaultAnswers from '@/data/defaultAnswers.js';
+import axios from "axios";
 
 export default {
   name: 'LessonView',
@@ -49,6 +50,9 @@ export default {
     return {
       wordProficiency: 0,
       answerState: 'hidden',
+      answers: [],
+      questionHtml: '',
+      hint: ''
     }
   },
   props: {
@@ -56,18 +60,14 @@ export default {
       type: String,
       default: 'hidden',
     },
-    answers: {
-      type: Array,
-      default: () => defaultAnswers,
-    },
     wordProficiency: {
       type: Number,
       default: 0,
     },
-    questionHtml: {
-      type: String,
-      default: 'omg <a href="TODO">bestie</a> im out w the <a href="TODO">girlypops</a> rn, fully <!-- Gen Z words link to their position on the neurel network --> <span class="lesson-answer--hidden">in my hot girl era</span> <!-- the answer --> so replies <a href="TODO">finna</a> be delayed',
-    }
+    // questionHtml: {
+    //   type: String,
+    //   default: 'omg <a href="TODO">bestie</a> im out w the <a href="TODO">girlypops</a> rn, fully <!-- Gen Z words link to their position on the neurel network --> <span class="lesson-answer--hidden">in my hot girl era</span> <!-- the answer --> so replies <a href="TODO">finna</a> be delayed',
+    // }
   },
   methods: {
     showNNotification(isRight) {
@@ -84,37 +84,66 @@ export default {
         default:
           this.answerState = 'hidden';
       }
+    },
+    get_lesson() {
+      axios.get("http://localhost:3001/get_lesson")
+        .then((response) => {
+          console.log(response.data)
+
+          // CARDS
+          let cards = []
+          for (let option of response.data["options"]) {
+            cards.push({
+              text: option,
+              "isRight": option === response.data["correct_word"] ? 1 : 0
+            })
+          }
+          console.log(cards)
+          this.answers = cards
+
+          // QUESTION
+          this.questionHtml = response.data["sentence"]
+
+          // HINT
+          this.hint = response.data["hint"]
+        })
+        .catch((error) => {
+          console.error(error);
+        })
     }
+  },
+  mounted() {
+    this.get_lesson()
   }
 }
 </script>
 
 <style>
-.lesson-char { 
+.lesson-char {
     width: 15%;
 }
 /* Lesson Characters */
-.lesson-char--0 { 
+.lesson-char--0 {
     content: url('../assets/characters/Charlie.png');
 }
-.lesson-char--1 { 
+.lesson-char--1 {
     content: url('../assets/characters/Derick.png');
 }
-.lesson-char--2 { 
+.lesson-char--2 {
     content: url('../assets/characters/Franco.png');
 }
-.lesson-char--3 { 
+.lesson-char--3 {
     content: url('../assets/characters/James.png');
 }
-.lesson-char--4 { 
+.lesson-char--4 {
     content: url('../assets/characters/Jess.png');
 }
-.lesson-char--5 { 
+.lesson-char--5 {
     content: url('../assets/characters/Marina.png');
 }
 
 .lesson-question-container {
-    margin: 20px; 
+    margin: 20px;
     margin-top: 60px;
     flex-grow: 1;
     gap:8px;

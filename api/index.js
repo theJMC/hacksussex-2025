@@ -27,14 +27,18 @@ app.get('/', (req, res) => {
 // Duo Funcs
 app.get("/get_lesson", async (req, res) => {
     const target = genz_words[Math.floor(Math.random() * genz_words.length)]
-    const correct = target["normal_words"][Math.floor(Math.random() * target["normal_words"].length)]
-    console.log(target["normal_words"])
-    const options = [
-        correct,
-        boomer_words[Math.floor(Math.random() * boomer_words.length)],
-        boomer_words[Math.floor(Math.random() * boomer_words.length)],
-        boomer_words[Math.floor(Math.random() * boomer_words.length)]
-    ]
+    // const target = genz_words[0]
+    const correct = target["word"]
+    let options = []
+    do {
+        options = [
+            correct,
+            genz_words[Math.floor(Math.random() * genz_words.length)]["word"],
+            genz_words[Math.floor(Math.random() * genz_words.length)]["word"],
+            genz_words[Math.floor(Math.random() * genz_words.length)]["word"]
+        ]
+    } while (new Set(options).size !== options.length)
+
 
     let shuffled = options.sort(() => Math.random() - 0.5)
 
