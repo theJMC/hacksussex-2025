@@ -16,6 +16,7 @@
 
 <script>
 import defaultCards from '../data/defaultCards';
+import axios from "axios";
 
 export default {
 name: 'CardView',
@@ -24,17 +25,14 @@ data() {
         cardSelected: {
             cardGenZ: '',
             cardBoomer: ''
-        }
+        },
+        cardList: [],
     }
 },
 props: {
     wordProficiency: {
     type: Number,
     default: 0,
-    },
-    cardList: {
-        type: Array,
-        default: () => defaultCards, // each card should be in format { cardGenZ, cardBoomer }
     }
 },
 methods: {
@@ -47,8 +45,8 @@ methods: {
         this.checkCard();
     },
     checkCard() {
-        const selectedCard = this.cardList.find(card => 
-            card.cardGenZ === this.cardSelected.cardGenZ && 
+        const selectedCard = this.cardList.find(card =>
+            card.cardGenZ === this.cardSelected.cardGenZ &&
             card.cardBoomer === this.cardSelected.cardBoomer
         );
         if (selectedCard) {
@@ -63,8 +61,21 @@ methods: {
                 this.$emit('all-cards-complete');
             }
         }
+    },
+    get_cards() {
+    axios.get("http://localhost:3001/get_card")
+      .then((response) => {
+        console.log(response.data)
+        this.cardList = response.data;
+      })
+      .catch((error) => {
+        console.error(error);
+      })
     }
-}
+},
+  mounted() {
+    this.get_cards()
+  }
 }
 </script>
 

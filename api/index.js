@@ -53,6 +53,20 @@ app.get("/get_lesson", async (req, res) => {
     res.send(result)
 })
 
+app.get("/get_card", async (req, res) => {
+    // pick 4 gen z and 4 boomer words
+    let cards = []
+    for (let i = 0; i < 4; i++) {
+        let target = genz_words[Math.floor(Math.random() * genz_words.length)];
+        cards.push({ cardGenZ: target["word"], cardBoomer: target["normal_words"][Math.floor(Math.random() * target["normal_words"].length)] })
+
+    }
+
+    res.send(cards)
+})
+
+
+
 // async function getGPT(message) {
 //     const completion = await openai.chat.completions.create({
 //         model: "gpt-4o-mini",
