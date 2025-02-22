@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import defaultCards from '../data/defaultCards';
 import axios from "axios";
 
 export default {

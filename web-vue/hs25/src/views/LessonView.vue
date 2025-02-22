@@ -2,7 +2,7 @@
   <div class="flex">
       <div class="lesson container">
         <div class="flex">
-          <div class="lesson-char lesson-char--0"></div>
+          <div :class="`lesson-char lesson-char--${characterNum}`"></div>
 
           <div class="lesson-question-container flex flex-column">
             <span class="lesson-question__advanced-label">
@@ -52,7 +52,8 @@ export default {
       answerState: 'hidden',
       answers: [],
       questionHtml: '',
-      hint: ''
+      hint: '',
+      characterNum: 0,
     }
   },
   props: {
@@ -110,10 +111,14 @@ export default {
         .catch((error) => {
           console.error(error);
         })
+    },
+    random_character() {
+      this.characterNum = Math.floor(Math.random() * 6)
     }
   },
   mounted() {
     this.get_lesson()
+    this.random_character()
   }
 }
 </script>
