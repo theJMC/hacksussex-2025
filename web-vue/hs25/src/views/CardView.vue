@@ -63,7 +63,7 @@ methods: {
         }
     },
     get_cards() {
-    axios.get("http://localhost:3001/get_card")
+    axios.get(`${import.meta.env.VITE_API_URL}/get_card`)
       .then((response) => {
         console.log(response.data)
         this.cardList = response.data;

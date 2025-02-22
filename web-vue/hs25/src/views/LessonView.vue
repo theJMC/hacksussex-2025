@@ -86,7 +86,7 @@ export default {
       }
     },
     get_lesson() {
-      axios.get("http://localhost:3001/get_lesson")
+      axios.get(`${import.meta.env.VITE_API_URL}/get_lesson`)
         .then((response) => {
           console.log(response.data)
 
