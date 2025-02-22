@@ -8,17 +8,21 @@ const fs = require("node:fs")
 
 require('dotenv').config()
 
-const OpenAI = require("openai");
-const openai = new OpenAI();
+// const OpenAI = require("openai");
+// const openai = new OpenAI();
 
+let all_words = []
 let boomer_words = []
 const genz_words = require('./genZ_words.json')
 for (let item of genz_words) {
+    all_words.push({"word": item["word"], "type": "genz"})
     for (let word of item["normal_words"]) {
         boomer_words.push(word)
-        // console.log(word)
+        all_words.push({"word": word, "type": "genz"})
     }
 }
+
+
 
 app.get('/', (req, res) => {
     res.send("Hello World");
@@ -63,6 +67,11 @@ app.get("/get_card", async (req, res) => {
     }
 
     res.send(cards)
+})
+
+app.get("/update_all_words", (req, res) => {
+    fs.writeFile("./all_words.json", JSON.stringify(all_words), (err) => {console.error(err)})
+    res.send("Done")
 })
 
 
