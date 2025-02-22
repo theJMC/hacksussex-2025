@@ -1,6 +1,215 @@
-h1 {
-    color: red;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&display=swap');
+/* Base Colours */
+:root {
+    --char-grey-base: #E5E5E5;
+
+    /* Bruno Colours */
+    --bruno-grey-base: #4B4B4B;
+    --bruno-pos: #7DB84F;
+    --bruno-neg: #E56464;
+    --bruno-warning: #E5A259;
+
+    /* General Colours */
+    --pale-purple: #AFAFAF;
+    --light-purple: #DDB1F9;
+    --dark-purple: #9069CD;
+    --pale-blue: #B9E8FF;
+    --light-blue: #84D7FF;
+    --dark-blue: #2561AC;
+    --pale-blue-green: #C6FDE7;
+    --light-blue-green: #5AEAB1;
+    --dark-blue-green: #43B487;
+    --pale-green: #D7FFB8;
+    --light-green: #B8F28B;
+    --dark-green: #7DB84F;
+    --pale-orange: #FFF1A7;
+    --light-orange: #FFCB80;
+    --dark-orange: #E5A259;
+    --pale-red: #FFDFE0;
+    --light-red: #FFB2B2;
+    --dark-red: #E56464;
+    --pale-pink: #FFD0F2;
+    --light-pink: #F9A3D7;
+    --dark-pink: #D45DA6;
+
+    /* Blank n White */
+    --real-white: #f2f2f2;
+    --white: #E5E5E5;
+    --black: #131F24;
+    --light-grey: #AFAFAF;
+    --dark-grey: #4B4B4B;
+    --shadow: #afafaf58;
+}
+body {
+    margin: 0;
+    background-color: var(--white);
+    font-family: "Montserrat", serif;
+}
+button {
+    font-family: "Montserrat", serif;
+}
+.container {
+    width: 100%;
+    padding: 80px 0;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+a {
+    text-decoration: dotted underline var(--dark-blue);
+    color: var(--dark-blue);
 }
 
-@import 'assets/colours/main-colours.scss';
-@import '../../www/lesson.scss';
+/* Flex */
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-justify-between {
+    justify-content: space-between;
+}
+
+/* Lesson CSS Start */
+.lesson-char { 
+    width: 15%;
+}
+/* Lesson Characters */
+.lesson-char--0 { 
+    content: url('../css/assets/characters/Charlie.png');
+}
+.lesson-char--1 { 
+    content: url('../css/assets/characters/Derick.png');
+}
+.lesson-char--2 { 
+    content: url('../css/assets/characters/Franco.png');
+}
+.lesson-char--3 { 
+    content: url('../css/assets/characters/James.png');
+}
+.lesson-char--4 { 
+    content: url('../css/assets/characters/Jess.png');
+}
+.lesson-char--5 { 
+    content: url('../css/assets/characters/Marina.png');
+}
+/* Bruno Characters */
+.lesson-result__bruno { 
+    width: 15%;
+}
+.lesson-result__bruno-neg {
+    content: url('../css/assets/bruno/Bruno-Negative.png');
+}
+.lesson-result__bruno-pos {
+    content: url('../css/assets/bruno/Bruno-Pos.png');
+}
+.lesson-result__bruno-ok {
+    content: url('../css/assets/bruno/Bruno-Warning.png');
+}
+
+.lesson-question-container {
+    margin: 20px; 
+    margin-top: 60px;
+    flex-grow: 1;
+    gap:8px;
+}
+.lesson-question,
+.lesson-answer {
+    background: var(--real-white);
+    border-radius: 20px;
+    padding: 20px;
+    height: min-content;
+    color: var(--dark-grey);
+    position: relative;
+    box-shadow: 0px 4px 4px var(--shadow);
+}
+
+.lesson-question::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -19px;
+    transform: translateY(-50%);
+    border: 10px solid transparent;
+    border-right-color: var(--real-white);
+}
+.lesson-answer-container {
+    margin: 20px;
+    gap:8px;
+}
+.lesson-answer--hidden {
+    color:transparent;
+    text-decoration: wavy underline var(--light-grey);
+}
+.lesson-answer {
+    flex: 1;
+    margin: 0;
+    border: none;
+}
+
+.lesson-answer:hover {
+    background: var(--pale-blue);
+    color: var(--dark-blue);
+    transition: background 0.2s, color 0.2s;
+}
+.lesson-question__advanced-label {
+    color: var(--dark-blue);
+}
+.lesson-hint {
+    color: var(--dark-blue-green);
+    background-color: var(--pale-blue-green);
+    padding: 10px;
+    border-radius: 10px;
+}
+.lesson-result-bannner {
+    color: var(--black);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.lesson-result-bannner-neg {
+    background-color: var(--bruno-neg);
+}
+.lesson-result-bannner-pos {
+    background-color: var(--bruno-pos);
+}
+.lesson-result-bannner-warn {
+    background-color: var(--bruno-warning);
+}
+.lesson-go-next {
+    margin: 30px 0;
+    background: var(--pale-green);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    text-align: left;
+    width: min-content;
+}
+/* Lesson CSS End */
+
+/* Bruno */
+.bruno-board {
+    background-color: var(--bruno-grey-base);
+}
+.bruno {
+    width: 150px;
+    content: url('../css/assets/bruno/Bruno-Default.png');
+}
+.bruno-juice{
+    height: 80%;
+    background: var(--dark-red);
+    background: linear-gradient(0deg, var(--dark-red) 20%, var(--dark-orange) 41%, var(--pale-orange) 62%, var(--light-green) 81%);
+    margin: 30%;
+    border-radius: 20px;
+}
+.bruno-juice-level {
+    background: var(--light-grey);
+    height: 100%;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--dark-purple);
+    background-color: var(--light-purple);
+    color: var(--dark-purple);
+}
