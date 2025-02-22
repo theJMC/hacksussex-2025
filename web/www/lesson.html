@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WordName Lesson</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div class="flex">
+      <div class="lesson container">
+        <div class="flex">
+          <div class="lesson-char lesson-char--0"></div>
+
+          <div class="lesson-question-container flex flex-column">
+            <span class="lesson-question__advanced-label">
+              Advanced Question:
+            </span>
+            <!-- Questions that use other Gen-z words are considered advanced -->
+            <div class="lesson-question">
+              omg <a href="TODO">bestie</a> im out w the
+              <a href="TODO">girlypops</a> rn, fully
+              <!-- Gen Z words link to their position on the neurel network -->
+              <span class="lesson-answer--hidden">in my hot girl era</span>
+              <!-- the answer -->
+              so replies <a href="TODO">finna</a> be delayed
+            </div>
+            <details class="lesson-hint"> <!-- For kinda hard + questions -->
+              <summary>Hint</summary>
+              <p>
+                This is a sentence that a Gen Z person might say to their friend.
+              </p>
+            </details>
+          </div>
+        </div>
+
+        <div class="lesson-answer-container flex">
+          <button class="lesson-answer">in my hot girl era</button>
+          <!-- the answer -->
+          <button class="lesson-answer">capping</button>
+          <button class="lesson-answer">sad</button>
+          <button class="lesson-answer">rizzing</button>
+        </div>
+
+        <!-- for very wrong answers -->
+        <div class="lesson-result-banner lesson-result-bannner-neg flex">
+          <div class="lesson-result__bruno lesson-result__bruno-neg"></div>
+          <div class="flex flex-column">
+            <h4 class="lesson-result-banner__text">Oh no!</h4>
+            <span>
+              The word 'capping' is usually used to imply a lie try again!
+            </span>
+          </div>
+        </div>
+
+        <!-- for kinda wrong answers -->
+        <div class="lesson-result-banner lesson-result-bannner-warn flex">
+          <div class="lesson-result__bruno lesson-result__bruno-ok"></div>
+          <div class="flex flex-column">
+            <h4 class="lesson-result-banner__text">So Close!</h4>
+            <span>
+              Although 'rizzing' is a word with posative connatations it's not the best to use in this senario
+            </span>
+          </div>
+        </div>
+
+        <!-- for right answers -->
+        <div class="lesson-result-banner lesson-result-bannner-pos flex">
+          <div class="lesson-result__bruno lesson-result__bruno-pos"></div>
+          <div class="flex flex-column flex-justify-between">
+            <div>
+            <h4 class="lesson-result-banner__text">You did it!</h4>
+            <span>
+              Charlie is soooooooooo in her hot girl era!
+            </span>
+          </div>
+
+          <button class="lesson-go-next"> Next </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bruno-board">
+        <div class="bruno"></div>
+        <div class="bruno-juice">
+          <div class="bruno-juice-level"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
