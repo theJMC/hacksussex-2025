@@ -1,3 +1,6 @@
 h1 {
     color: red;
 }
+
+@import 'assets/colours/main-colours.scss';
+@import '../../www/lesson.scss';
