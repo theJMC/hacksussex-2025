@@ -162,19 +162,19 @@ a {
     padding: 10px;
     border-radius: 10px;
 }
-.lesson-result-bannner {
+.lesson-result-banner {
     color: var(--black);
     padding: 10px;
     border-radius: 10px;
 }
 
-.lesson-result-bannner-neg {
+.lesson-result-banner-neg {
     background-color: var(--bruno-neg);
 }
 .lesson-result-bannner-pos {
     background-color: var(--bruno-pos);
 }
-.lesson-result-bannner-warn {
+.lesson-result-banner-warn {
     background-color: var(--bruno-warning);
 }
 .lesson-go-next {
