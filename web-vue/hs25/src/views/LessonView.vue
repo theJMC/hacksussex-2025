@@ -10,12 +10,7 @@
             </span>
             <!-- Questions that use other Gen-z words are considered advanced -->
             <div class="lesson-question">
-              omg <a href="TODO">bestie</a> im out w the
-              <a href="TODO">girlypops</a> rn, fully
-              <!-- Gen Z words link to their position on the neurel network -->
-              <span class="lesson-answer--hidden">in my hot girl era</span>
-              <!-- the answer -->
-              so replies <a href="TODO">finna</a> be delayed
+              <RichTextEditor :content="questionHtml" />
             </div>
             <details class="lesson-hint"> <!-- For kinda hard + questions -->
               <summary>Hint</summary>
@@ -40,13 +35,15 @@
 <script>
 import BrunoBlock from '@/components/BrunoBlock.vue';
 import Notification from '@/components/Notification.vue';
+import RichTextEditor from '@/components/RichTextEditor.vue';
 import defaultAnswers from '@/data/defaultAnswers.js';
 
 export default {
   name: 'LessonView',
   components: {
     Notification,
-    BrunoBlock
+    BrunoBlock,
+    RichTextEditor
   },
   data() {
     return {
@@ -66,6 +63,10 @@ export default {
     wordProficiency: {
       type: Number,
       default: 0,
+    },
+    questionHtml: {
+      type: String,
+      default: 'omg <a href="TODO">bestie</a> im out w the <a href="TODO">girlypops</a> rn, fully <!-- Gen Z words link to their position on the neurel network --> <span class="lesson-answer--hidden">in my hot girl era</span> <!-- the answer --> so replies <a href="TODO">finna</a> be delayed',
     }
   },
   methods: {
