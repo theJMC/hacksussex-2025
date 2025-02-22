@@ -27,17 +27,11 @@ app.get("/get_lesson", async (req, res) => {
     {"options": ["word1, word2, word3, word4, word5, word6"], "sentence": the word used in a sentence, "correct_word": the normal word, "hint": a hint} \
     The list of words is: ${boomer_words.join(", ")}`
     const response = JSON.parse(await getGPT(msg))
-    console.log(response)
-    const options = response["options"]
-    const sentence = response["sentence"]
-    const correct_word = response["correct_word"]
-    const hint = response["hint"]
-    const result = {"target_word": target_word, "options": options, "sentence": sentence, "correct_word": correct_word, "hint": hint}
+    const result = {"target_word": target_word, "options": response["options"],
+        "sentence": response["sentence"], "correct_word": response["correct_word"], "hint": response["hint"]}
     console.log(result)
     res.send(result)
 })
-
-
 
 async function getGPT(message) {
     const completion = await openai.chat.completions.create({
