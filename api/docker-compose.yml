@@ -1,0 +1,10 @@
+services:
+  api:
+    image: "node:20"
+    user: "node"
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: "npm run start"
