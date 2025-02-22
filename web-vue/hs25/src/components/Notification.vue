@@ -71,7 +71,9 @@ h4 {
     text-align: left;
     width: min-content;
 }
-
+.lesson-go-next:hover {
+    background: var(--light-green);
+}
 /* Bruno Characters */
 .lesson-result__bruno { 
     width: 15%;
@@ -82,7 +84,7 @@ h4 {
 .lesson-result__bruno-pos {
     content: url('../assets/bruno/Bruno-Pos.png');
 }
-.lesson-result__bruno-ok {
+.lesson-result__bruno-warn {
     content: url('../assets/bruno/Bruno-Warning.png');
 }
 </style>
