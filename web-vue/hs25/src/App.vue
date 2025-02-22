@@ -1,13 +1,14 @@
-<template>
-<LessonView />
-</template>
-
 <script setup>
-import LessonView from './views/LessonView.vue';
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
-<style>
+<template>
+  <header>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/cards">About</RouterLink>
+      </nav>
+  </header>
 
-/* All Docs */
-
-</style>
+  <RouterView />
+</template>
