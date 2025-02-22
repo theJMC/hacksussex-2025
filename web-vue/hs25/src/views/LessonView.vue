@@ -27,14 +27,10 @@
         </div>
 
         <div class="lesson-answer-container flex">
-          <button class="lesson-answer">in my hot girl era</button>
-          <!-- the answer -->
-          <button class="lesson-answer">capping</button>
-          <button class="lesson-answer">sad</button>
-          <button class="lesson-answer">rizzing</button>
+          <button v-for="(answer, index) in answers" :key="index" :class="`lesson-answer ${answer.hasBeenClicked ? 'TODO' : ''}`" @click="showNNotification(answer.isRight)"> {{ answer.text }}</button>
         </div>
 
-        <Notification type="pos" />
+        <Notification :type="answerState" />
       </div>
 
       <BrunoBlock :wordProficiency="wordProficiency" />
@@ -44,6 +40,7 @@
 <script>
 import BrunoBlock from '@/components/BrunoBlock.vue';
 import Notification from '@/components/Notification.vue';
+import defaultAnswers from '@/data/defaultAnswers.js';
 
 export default {
   name: 'LessonView',
@@ -51,10 +48,20 @@ export default {
     Notification,
     BrunoBlock
   },
+  data() {
+    return {
+      wordProficiency: 0,
+      answerState: 'hidden',
+    }
+  },
   props: {
     type: {
       type: String,
       default: 'hidden',
+    },
+    answers: {
+      type: Array,
+      default: () => defaultAnswers,
     },
     wordProficiency: {
       type: Number,
@@ -62,6 +69,21 @@ export default {
     }
   },
   methods: {
+    showNNotification(isRight) {
+      switch (isRight) {
+        case 1:
+          this.answerState = 'pos';
+          break;
+        case 0:
+          this.answerState = 'neg';
+          break;
+        case 2:
+          this.answerState = 'warn';
+          break;
+        default:
+          this.answerState = 'hidden';
+      }
+    }
   }
 }
 </script>
