@@ -119,3 +119,7 @@ a {
   background-color: var(--light-purple);
   color: var(--dark-purple);
 }
+
+canvas:focus, canvas:focus-visible{
+  background: var(--real-white);
+}
