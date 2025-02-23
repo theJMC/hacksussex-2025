@@ -37,7 +37,7 @@ export default {
         compitency: {
             type: Number,
             default: 0
-        }
+        },
     },
     mounted() {
         const container = this.$refs.network;

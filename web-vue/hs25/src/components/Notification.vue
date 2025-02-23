@@ -33,10 +33,18 @@ export default {
       type: String,
       default: 'hidden',
     },
+    refreshOnRight: {
+      type: Boolean,
+      default: true,
+    }
   },
   methods: {
     refreshPage() {
-      window.location.reload();
+      if (this.refreshOnRight) {
+        window.location.reload();
+      } else {
+        this.$emit('next-lesson');
+      }
     }
   }
 }

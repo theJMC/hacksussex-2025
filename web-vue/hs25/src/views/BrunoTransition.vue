@@ -15,7 +15,7 @@
             </div>
 
             <div class="flex flex-justify-center">
-                <button class="base-button-one" @click="handleButtonClick"> Learn this word </button>
+                <button class="base-button-one" @click="handleButtonClick"> {{wordProficiency < 25 ? 'Learn this word' : 'Keep going'}} </button>
             </div>
         </div>
         <div class="bruno-view bruno-transition"></div>
@@ -118,6 +118,7 @@ export default {
 
 .bruno-reaction { 
     width: fit-content;
+    gap: 8px;
 }
 
 .bruno-transition--enlightened{ 

@@ -25,7 +25,7 @@
           <button v-for="(answer, index) in answers" :key="index" :class="`lesson-answer ${answer.hasBeenClicked ? 'lesson-button--wrong' : ''}`" @click="showNNotification(answer)"> {{ answer.text }}</button>
         </div>
 
-        <Notification :type="answerState" />
+        <Notification :type="answerState" :refreshOnRight="refreshOnRight" @next-lesson="nextLesson"/>
       </div>
     </div>
 </template>
@@ -55,6 +55,10 @@ export default {
     type: {
       type: String,
       default: 'hidden',
+    },
+    refreshOnRight: {
+      type: Boolean,
+      default: false,
     },
     wordProficiency: {
       type: Number,
@@ -114,6 +118,9 @@ export default {
     },
     random_character() {
       this.characterNum = Math.floor(Math.random() * 6)
+    },
+    nextLesson() {
+      this.$emit('next-lesson');
     }
   },
   mounted() {
@@ -212,7 +219,7 @@ export default {
 body:has(.lesson-result-banner-pos) {
     .lesson-answer--hidden {
       background-color: var(--pale-green);
-        color: var(--dark-green);
+        color: var (--dark-green);
         text-decoration: none;
         padding: 0 2px;
     }
