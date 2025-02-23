@@ -6,7 +6,7 @@
         <h4 class="lesson-result-banner__text">{{ NotificationTitles[type] }}</h4>
         <span>{{ NotificationDesc[type] }}</span>
       </div>
-      <button v-if="type === 'pos'" class="lesson-go-next">Next</button>
+      <button v-if="type === 'pos'" type="button" class="lesson-go-next" @click="refreshPage">Next</button>
     </div>
   </div>
 </template>
@@ -34,6 +34,11 @@ export default {
       default: 'hidden',
     },
   },
+  methods: {
+    refreshPage() {
+      window.location.reload();
+    }
+  }
 }
 </script>
 

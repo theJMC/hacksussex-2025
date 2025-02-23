@@ -2,9 +2,9 @@
     <div class="container homepage flex flex-column flex-align-center flex-justify-center">
         <h1> Untitled Hackathon Project </h1>
         <div class="flex homepage-buttons">
-            <button class="base-button-one flex-one button-green" @click="redirectToMain"> Learn a new word </button>
-            <button class="base-button-one flex-one button-orange" @click="redirectToPractice"> Practice </button>
-            <button class="base-button-one flex-one" @click="redirectToNetwork"> Network </button>
+            <button type="button" class="base-button-one flex-one button-green" @click="redirectToMain" aria-label="Learn a new word"> Learn a new word </button>
+            <button type="button" class="base-button-one flex-one button-orange" @click="redirectToPractice" aria-label="Practice"> Practice </button>
+            <button type="button" class="base-button-one flex-one" @click="redirectToNetwork" aria-label="Network"> Network </button>
         </div>
 
         <div class="flex homepage-characters">
