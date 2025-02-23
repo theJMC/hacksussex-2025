@@ -22,7 +22,7 @@
         </div>
 
         <div class="lesson-answer-container flex">
-          <button v-for="(answer, index) in answers" :key="index" :class="`lesson-answer ${answer.hasBeenClicked ? 'TODO' : ''}`" @click="showNNotification(answer.isRight)"> {{ answer.text }}</button>
+          <button v-for="(answer, index) in answers" :key="index" :class="`lesson-answer ${answer.hasBeenClicked ? 'lesson-button--wrong' : ''}`" @click="showNNotification(answer)"> {{ answer.text }}</button>
         </div>
 
         <Notification :type="answerState" />
@@ -66,7 +66,12 @@ export default {
     // }
   },
   methods: {
-    showNNotification(isRight) {
+    showNNotification(answer) {
+      if (answer.isRight != 1){
+        answer.hasBeenClicked = true
+      }
+      
+      let isRight = answer.isRight
       switch (isRight) {
         case 1:
           this.answerState = 'pos';
@@ -190,6 +195,12 @@ export default {
 }
 .lesson-question__advanced-label {
     color: var(--dark-blue);
+}
+.lesson-button--wrong {
+    background-color: var(--pale-red);
+    color: var(--dark-red);
+    pointer-events: none;
+    cursor: not-allowed;
 }
 .lesson-hint {
     color: var(--dark-blue-green);
