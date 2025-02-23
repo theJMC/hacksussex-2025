@@ -4,12 +4,12 @@
             <div class="bruno"></div>
             <div class="network-functions flex flex-column">
                 <div class="lesson-question">
-                    <RichTextEditor content="youre a gen z" />
+                    <RichTextEditor :content="`${compitency > 50 ? 'Well done!' : ''} You’re currently <b>${compitency}%</b> Gen Z competent!`" />
                 </div>
                 <div class="flex network-buttons">
-                    <button class="base-button-one flex-one button-green" @click="redirectToMain"> Learn a new word </button>
-                    <button class="base-button-one flex-one button-orange" @click="redirectToPractice"> Practice </button>
-                    <button class="base-button-one flex-one" @click="redirectToHome"> Home </button>
+                    <button type="button" class="base-button-one flex-one button-green" @click="redirectToMain" aria-label="Learn a new word"> Learn a new word </button>
+                    <button type="button" class="base-button-one flex-one button-orange" @click="redirectToPractice" aria-label="Practice"> Practice </button>
+                    <button type="button" class="base-button-one flex-one" @click="redirectToHome" aria-label="Home"> Home </button>
                 </div>
             </div>
         </div>
@@ -33,6 +33,10 @@ export default {
         focusedNode: {
             type: Number,
             default: 3
+        },
+        compitency: {
+            type: Number,
+            default: 0
         }
     },
     mounted() {
