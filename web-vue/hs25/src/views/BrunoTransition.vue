@@ -1,24 +1,39 @@
 <template>
-    <div>
-        <div class="bruno-view bruno-reaction flex">
-            <div class="flex bruno-style fill-flex" style="justify-content: end;">
-                <div :class="transition"></div>
-            </div> 
-            <div class="flex bruno-style fill-flex" style="justify-content: start;">
-                <h2 class="bruno-white">Good Job!</h2>
-            </div> 
+    <div class="bruno-view-background flex flex-justify-center flex-align-center">
+        <div class="bruno-view bruno-reaction-container bruno-reaction flex flex-column">
+            <div class="bruno-reaction flex">
+                <div class="flex bruno-style">
+                    <div :class="transition"></div>
+                </div> 
+                <div class="flex bruno-style">
+                    <div class="lesson-question-container flex flex-column">
+                    <div class="lesson-question">
+                        <RichTextEditor :content="speachHtml" />
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="flex flex-justify-center">
+                <button class="base-button-one" @click="handleButtonClick"> Learn this word </button>
+            </div>
         </div>
         <div class="bruno-view bruno-transition"></div>
     </div>
 </template>
 
 <script>
+import RichTextEditor from '@/components/RichTextEditor.vue';
+
 export default {
   name: 'BrunoTransition',
+  components: {
+    RichTextEditor,
+  },
   props: {
-    redirectUrl: {
+    speachHtml: {
       type: String,
-      default: '',
+      default: 'are you ready to <span class="word-to-learn">slay</span> this hackathon',
     },
     wordProficiency: {
       type: Number,
@@ -34,20 +49,22 @@ export default {
           : 'bruno-transition--sad'
     },
   },
+  methods: {
+    handleButtonClick() {
+    console.log('button clicked');
+      this.$emit('button-press');
+    }
+  },
   mounted() {
     this.$nextTick(() => {
         const transitionElement = this.$el.querySelector('.bruno-transition');
-        console.log("Initial background-position:", getComputedStyle(transitionElement).backgroundPosition);
 
         setTimeout(() => {
             transitionElement.classList.add('bruno-transition--after');
-            console.log("After class added:", getComputedStyle(transitionElement).backgroundPosition);
 
             setTimeout(() => {
-                if (this.redirectUrl) {
-                    this.$router.push(this.redirectUrl);
-                }
-            }, 1000);
+                transitionElement.classList.add('bruno-transition--after-after');
+            }, 3000);
         }, 50);
     });
 }
@@ -57,6 +74,11 @@ export default {
 </script>
 
 <style>
+.bruno-view-background {
+    background-color: var(--bruno-grey-base);
+    width: 100%;
+    height: 100vh;
+}
 .bruno-white {
     color: var(--real-white);
 }
@@ -75,8 +97,18 @@ export default {
     background-position: 0% 0%;
 }
 
+.bruno-transition--after-after {
+    z-index: -2;
+}
+
 .bruno-style {
     align-items: center;
+}
+
+.bruno-reaction-container {
+    height: 100%;
+    justify-content: center;
+    max-width: 75%;
 }
 
 .bruno-view {
@@ -85,9 +117,7 @@ export default {
 }
 
 .bruno-reaction { 
-    background-color: var(--bruno-grey-base);
-    width: 100%;
-    height: 100vh;
+    width: fit-content;
 }
 
 .bruno-transition--enlightened{ 
@@ -103,7 +133,7 @@ export default {
 .bruno-transition--enlightened,
 .bruno-transition--regular,
 .bruno-transition--sad { 
-    width: 15%;
+    width: 150px;
 }
 
 </style>

@@ -27,13 +27,10 @@
 
         <Notification :type="answerState" />
       </div>
-
-      <BrunoBlock :wordProficiency="wordProficiency" />
     </div>
 </template>
 
 <script>
-import BrunoBlock from '@/components/BrunoBlock.vue';
 import Notification from '@/components/Notification.vue';
 import RichTextEditor from '@/components/RichTextEditor.vue';
 // import defaultAnswers from '@/data/defaultAnswers.js';
@@ -43,7 +40,6 @@ export default {
   name: 'LessonView',
   components: {
     Notification,
-    BrunoBlock,
     RichTextEditor
   },
   data() {
@@ -125,7 +121,7 @@ export default {
 
 <style>
 .lesson-char {
-    width: 15%;
+    width: 150px;
 }
 /* Lesson Characters */
 .lesson-char--0 {
