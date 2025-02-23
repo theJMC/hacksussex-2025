@@ -44,7 +44,6 @@ export default {
   },
   data() {
     return {
-      wordProficiency: 0,
       answerState: 'hidden',
       answers: [],
       questionHtml: '',
