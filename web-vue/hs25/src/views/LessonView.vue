@@ -121,7 +121,8 @@ export default {
 
 <style>
 .lesson-char {
-    width: 150px;
+  width: 175px;
+  height: fit-content;
 }
 /* Lesson Characters */
 .lesson-char--0 {
@@ -196,5 +197,14 @@ export default {
     background-color: var(--pale-blue-green);
     padding: 10px;
     border-radius: 10px;
+}
+
+body:has(.lesson-result-banner-pos) {
+    .lesson-answer--hidden {
+      background-color: var(--pale-green);
+        color: var(--dark-green);
+        text-decoration: none;
+        padding: 0 2px;
+    }
 }
 </style>

@@ -39,6 +39,10 @@ const router = createRouter({
       path: '/main',
       name: 'main',
       component: MainApp,
+    }, {
+      path: '/lesson',
+      name: 'lesson',
+      component: LessonView,
     }
   ],
 })
