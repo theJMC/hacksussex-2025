@@ -12,14 +12,12 @@
         </div>
 
         <div class="flex">
-          <div class="flex-grow flex flex-column">
-            <h3> Which one is the correct response? </h3>
             <div class="lesson-question-container flex flex-column">
                 <div class="lesson-question lesson-question--left">
                     <RichTextEditor :content="responseHtml" />
                 </div>
             </div>
-          </div>
+
             <div :class="`lesson-char lesson-char--${randomCharachter + 1}`"></div>
         </div>
     </div>
