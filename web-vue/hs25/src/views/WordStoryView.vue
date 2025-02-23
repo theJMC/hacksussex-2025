@@ -28,22 +28,49 @@
 
 <script>
 import RichTextEditor from '../components/RichTextEditor.vue';
+import axios from "axios";
 
 export default {
 name: 'WordStoryView',
 components: {
     RichTextEditor,
 },
-props: {
-    speachHtml: {
-        type: String,
-        default: 'im speaking!',
-    },
-    responseHtml: {
-        type: String,
-        default: 'im responding!',
+  data() {
+    return {
+      speachHtml: '',
+      responseHtml: '',
     }
-},
+  },
+// props: {
+//     // speachHtml: {
+//     //     type: String,
+//     //     default: 'im speaking!',
+//     // },
+//     // responseHtml: {
+//     //     type: String,
+//     //     default: 'im responding!',
+//     // }
+// },
+  methods: {
+    get_convo() {
+      axios.get(`${import.meta.env.VITE_API_URL}/conversation`)
+        .then((response) => {
+          console.log(response.data)
+          this.speachHtml = response.data.initial;
+          this.responseHtml = "<h1>Which one is the correct response?</h1>";
+          for (let i = 0; i < response.data.options.length; i++) {
+            this.responseHtml += `${i+1}: ` + response.data.options[i].response + "<br>";
+          }
+          // this.responseHtml = response.data.options[0].response;
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+    },
+  },
+  mounted() {
+    this.get_convo();
+  },
 computed: {
     randomCharachter() {
         return Math.floor(Math.random() * 5);

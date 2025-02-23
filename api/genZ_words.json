@@ -54,12 +54,6 @@
     "example": "I <span class=\"lesson-answer--hidden\">yeeted</span> my phone across the room when I saw that message."
   },
   {
-    "word": "gyat",
-    "normal_words": ["wow", "whoa", "impressive"],
-    "hint": "An exclamation used when something is surprising or impressive.",
-    "example": "<span class=\"lesson-answer--hidden\">GYAT</span>! That was way too close!"
-  },
-  {
     "word": "bop",
     "normal_words": ["hit", "jam", "great song"],
     "hint": "A term used for a catchy, enjoyable song.",
