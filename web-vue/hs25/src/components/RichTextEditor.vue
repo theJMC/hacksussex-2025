@@ -1,11 +1,10 @@
 <template>
-  <div :class="`rte ${padding ? 'container' : ''}`" v-html="content"></div>
+  <div :class="`rte`" v-html="content"></div>
 </template>
 
 <script>
 export default {
   name: 'RichTextEditor',
-
   props: {
     content: {
       type: String,

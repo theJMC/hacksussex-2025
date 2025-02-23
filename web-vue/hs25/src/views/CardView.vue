@@ -1,15 +1,18 @@
 <template>
-    <div class="card-view container flex">
-        <div class="card-view__side fill-flex flex flex-column">
-            <button v-for="(card, index) in cardList" :key="index" @click="selectGenZCard(card.cardGenZ)" :class="['card-view__card', 'fill-flex', { 'card-view__card--selected': cardSelected.cardGenZ === card.cardGenZ }, { 'card-view__card--complete': card.isComplete === true }]">
-                {{ card.cardGenZ }}
-            </button>
-        </div>
+    <div class="card-view__container flex flex-column flex-align-center flex-justify-center">
+        <h3> Match the Gen-Z term to its <i> traditional </i> meaning</h3>
+        <div class="card-view container flex">
+            <div class="card-view__side fill-flex flex flex-column">
+                <button v-for="(card, index) in cardList" :key="index" @click="selectGenZCard(card.cardGenZ)" :class="['card-view__card', 'fill-flex', { 'card-view__card--selected': cardSelected.cardGenZ === card.cardGenZ }, { 'card-view__card--complete': card.isComplete === true }]">
+                    {{ card.cardGenZ }}
+                </button>
+            </div>
 
-        <div class="card-view__side fill-flex flex flex-column">
-            <button v-for="(card, index) in cardList" :key="index" @click="selectBoomerCard(card.cardBoomer)" :class="['card-view__card', 'fill-flex', { 'card-view__card--selected': cardSelected.cardBoomer === card.cardBoomer }, { 'card-view__card--complete': card.isComplete === true }]">
-                {{ card.cardBoomer }}
-            </button>
+            <div class="card-view__side fill-flex flex flex-column">
+                <button v-for="(card, index) in cardList" :key="index" @click="selectBoomerCard(card.cardBoomer)" :class="['card-view__card', 'fill-flex', { 'card-view__card--selected': cardSelected.cardBoomer === card.cardBoomer }, { 'card-view__card--complete': card.isComplete === true }]">
+                    {{ card.cardBoomer }}
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -82,13 +85,25 @@ methods: {
 .fill-flex {
     flex: 1;
 }
+h3 {
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+}
+
+.card-view__container {
+    height: 100%;
+}
 
 .card-view__side {
-    gap: 16px;
+    gap: 30px;
 }
 
 .card-view {
+    max-width: 80%;
+    padding: 20px;
     gap: 24px;
+    margin: 0 auto;
 }
 
 .card-view__card {

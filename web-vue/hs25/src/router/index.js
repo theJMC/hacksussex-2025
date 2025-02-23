@@ -4,6 +4,7 @@ import CardView from '../views/CardView.vue'
 import BrunoTransition from '@/views/BrunoTransition.vue'
 import NetworkView from '@/views/NetworkView.vue'
 import WordStoryView from '@/views/WordStoryView.vue'
+import MainApp from '@/views/MainApp.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,11 @@ const router = createRouter({
       name: 'story',
       component: WordStoryView,
     },
+    {
+      path: '/main',
+      name: 'main',
+      component: MainApp,
+    }
   ],
 })
 
