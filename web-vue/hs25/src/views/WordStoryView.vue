@@ -61,11 +61,7 @@ components: {
         .then((response) => {
           console.log(response.data)
           this.speachHtml = response.data.initial;
-          this.responseHtml = "<h1>Which one is the correct response?</h1>";
-          for (let i = 0; i < response.data.options.length; i++) {
-            this.responseHtml += `${i+1}: ` + response.data.options[i].response + "<br>";
-          }
-          // this.responseHtml = response.data.options[0].response;
+          this.responseHtml = response.data.options.response;
         })
         .catch((error) => {
           console.error(error);

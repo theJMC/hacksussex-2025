@@ -81,12 +81,15 @@ app.get("/conversation", async (req, res) => {
     const opening_statement = await getGPT(opening_statement_prompt)
     console.log(opening_statement)
 
-    const prompt = `Propose 4 response sentences each using a different gen z word to the statement ${opening_statement}.
-    Make the responses be relevant to the statement, however using a different gen z word (that may make the sentence not make sense) in each response.
-    Make sure one response use the word/phrase ${target_word} in response to the statement. The response should take the form {"response": response, "correct": true or false, "reasoning": reasoning}.
-    Respond with just the 4 responses, all separated by a , character.`
+    // const prompt = `Propose 4 response sentences each using a different gen z word to the statement ${opening_statement}.
+    // Make the responses be relevant to the statement, however using a different gen z word (that may make the sentence not make sense) in each response.
+    // Make sure one response use the word/phrase ${target_word} in response to the statement. The response should take the form {"response": response, "correct": true or false, "reasoning": reasoning}.
+    // Respond with just the 4 responses, all separated by a , character.`
+    const prompt = `Respond sentences each using a different gen z word to the statement ${opening_statement}.
+    Make the response be relevant to the statement using the word/phrase ${target_word} in the response. 
+    The response should take the form {"response": response, "reasoning": reasoning}.`
     const raw = await getGPT(prompt)
-    const responses = JSON.parse(`[${raw}]`)
+    const responses = JSON.parse(raw)
     console.log(responses)
 
     let result = {"initial": opening_statement, options: responses}
