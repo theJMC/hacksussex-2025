@@ -1,23 +1,34 @@
 <template>
-    <div class="network-element network-title flex">
-        <h3 class="network-title-text"> Explore your word network </h3>
-    </div>
+    <div class="flex flex-column flex-justify-center flex-align-center">
+        <div class="network-header flex">
+            <div class="bruno"></div>
+            <div class="network-functions flex flex-column">
+                <div class="lesson-question">
+                    <RichTextEditor content="youre a gen z" />
+                </div>
+                <div class="flex network-buttons">
+                    <button class="base-button-one flex-one button-green" @click="redirectToMain"> Learn a new word </button>
+                    <button class="base-button-one flex-one button-orange" @click="redirectToPractice"> Practice </button>
+                    <button class="base-button-one flex-one" @click="redirectToHome"> Home </button>
+                </div>
+            </div>
+        </div>
 
-    <div class="network-element network" ref="network" tabindex="-1"></div>
-
-    <div class="network-button__container network-bottom flex">
-        <button class="network-button"> Learn more </button>
-        <button class="network-button"> Practice </button>
+        <div class="network-element network" ref="network" tabindex="-1"></div>
     </div>
 </template>
 
 <script>
+import RichTextEditor from '@/components/RichTextEditor.vue';
 import { Network } from 'vis-network';
 import { DataSet } from 'vis-data';
 import { genZWords } from '@/data/dataNetwork'; // Import the data
 
 export default {
     name: 'NetworkView',
+    components: {
+        RichTextEditor
+    },
     props: {
         focusedNode: {
             type: Number,
@@ -107,46 +118,43 @@ export default {
                     break;
             }
         });
+    },
+    methods: {
+        redirectToMain() {
+        this.$router.push('/main');
+      },
+      redirectToPractice() {
+        this.$router.push('/practice');
+      },
+      redirectToHome() {
+        this.$router.push('/');
+      },
     }
 }
 </script>
 
 <style scoped>
-
-.network-title {
-    justify-content: center;
-    align-items: center;
-    width: 99%;
-}
-
-.network-bottom {
-    justify-content: center;
-    align-items: center;
-    width: 99%;
-    z-index: 3;
-    gap:20px;
-}
-
-.network-title-text,
-.network-button {
-    width: fit-content;
-    background-color: var(--white);
-    border: 1px solid var(--light-grey);
-    border-radius: 20px;
-    padding: 20px 80px;
-    box-shadow: 0px 4px 4px var(--shadow);
-    z-index: 1;
-}
-
 .network {
     height: 70vh;
-    width: 99%;
+    width: 90%;
     margin: 10px;
-    border: 3px solid var(--light-grey);
+    background: var(--real-white);
     box-shadow: 0px 4px 4px var(--shadow);
 }
 
-.network-button {
-    z-index: 2;
+.network-header {
+    padding-top: 30px;
+    width: 100%;
+    background-color: var(--dark-grey);
+}
+
+.network-functions {
+    gap: 14px;
+    width: 80%;
+}
+
+.network-buttons {
+    gap: 8px;
+    width: 100%;
 }
 </style>
