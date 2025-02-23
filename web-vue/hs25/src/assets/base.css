@@ -95,7 +95,21 @@ a {
   height: 80%;
 }
 
+.button-green {
+  background-color: var(--light-blue-green);
+}
+.button-green:hover {
+  background-color: var(--dark-blue-green);
+  color: var(--pale-blue-green);
+}
 
+.button-orange {
+  background-color: var(--light-orange);
+}
+.button-orange:hover {
+  background-color: var(--dark-orange);
+  color: var(--pale-orange);
+}
 
 
 
