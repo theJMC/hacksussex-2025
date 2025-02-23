@@ -2,9 +2,9 @@
     <div class="container homepage flex flex-column flex-align-center flex-justify-center">
         <h1> Untitled Hackathon Project </h1>
         <div class="flex homepage-buttons">
-            <button class="base-button-one flex-one button-green"> Learn a new word </button>
-            <button class="base-button-one flex-one button-orange"> Practice </button>
-            <button class="base-button-one flex-one"> Network </button>
+            <button class="base-button-one flex-one button-green" @click="redirectToMain"> Learn a new word </button>
+            <button class="base-button-one flex-one button-orange" @click="redirectToPractice"> Practice </button>
+            <button class="base-button-one flex-one" @click="redirectToNetwork"> Network </button>
         </div>
 
         <div class="flex homepage-characters">
@@ -27,6 +27,17 @@
         default: '',
       },
     },
+    methods: {
+      redirectToMain() {
+        this.$router.push('/main');
+      },
+      redirectToPractice() {
+        this.$router.push('/practice');
+      },
+      redirectToNetwork() {
+        this.$router.push('/network');
+      },
+    },
   }
   </script>
   
@@ -36,7 +47,7 @@
 }
 .homepage {
     height: 80vh;
-    gap:4px;
+    gap: 14px;
 }
 .homepage-buttons {
     gap: 8px;
@@ -47,6 +58,12 @@
     .lesson-char {
         width: 200px;
         height: fit-content;
+
+        transition: all 0.5s;
+    }
+
+    .lesson-char:hover {
+        transform: scale(1.1);
     }
 }
 

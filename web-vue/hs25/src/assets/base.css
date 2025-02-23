@@ -89,6 +89,7 @@ a {
 .base-button-one:hover {
   background-color: var(--dark-blue);
   color: var(--pale-blue);
+  cursor: pointer;
 }
 
 .container-80 {
