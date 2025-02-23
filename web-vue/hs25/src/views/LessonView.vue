@@ -58,7 +58,7 @@ export default {
     },
     refreshOnRight: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     wordProficiency: {
       type: Number,
@@ -120,7 +120,13 @@ export default {
       this.characterNum = Math.floor(Math.random() * 6)
     },
     nextLesson() {
+      console.log('running')
+      console.log(this.refreshOnRight)
+      if (this.refreshOnRight) {
+        window.location.reload();
+      } else {
       this.$emit('next-lesson');
+      }
     }
   },
   mounted() {
@@ -219,7 +225,7 @@ export default {
 body:has(.lesson-result-banner-pos) {
     .lesson-answer--hidden {
       background-color: var(--pale-green);
-        color: var (--dark-green);
+        color: var(--dark-green);
         text-decoration: none;
         padding: 0 2px;
     }

@@ -29,14 +29,15 @@ export default {
     components: {
         RichTextEditor
     },
+    data() {
+        return {
+            compitency: 0
+        }
+    },
     props: {
         focusedNode: {
             type: Number,
             default: 3
-        },
-        compitency: {
-            type: Number,
-            default: 0
         },
     },
     mounted() {
@@ -44,6 +45,8 @@ export default {
         const paleGreen = '#98FB98';
         const paleRed = '#FFC0CB';
         const lineGrey = '#00000';
+
+        this.compitency = genZWords.reduce((acc, word) => acc + (word.isGenZ ? 1 : 0), 0) / genZWords.length * 100;
 
         // Create nodes and edges from the imported data
         const nodes = new DataSet(genZWords.map((word, index) => ({

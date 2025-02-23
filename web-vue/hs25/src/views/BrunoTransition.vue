@@ -15,7 +15,7 @@
             </div>
 
             <div class="flex flex-justify-center">
-                <button class="base-button-one" @click="handleButtonClick"> {{wordProficiency < 25 ? 'Learn this word' : 'Keep going'}} </button>
+                <button class="base-button-one" @click="handleButtonClick"> {{wordProficiency < 25 ? 'Learn this word' : wordProficiency < 100 ? 'Keep going' : 'Go to your word network'}} </button>
             </div>
         </div>
         <div class="bruno-view bruno-transition"></div>
@@ -51,8 +51,11 @@ export default {
   },
   methods: {
     handleButtonClick() {
-    console.log('button clicked');
-      this.$emit('button-press');
+        if (this.wordProficiency > 90) {
+            this.$router.push('/network');
+        } else {
+            this.$emit('button-press');
+        }
     }
   },
   mounted() {

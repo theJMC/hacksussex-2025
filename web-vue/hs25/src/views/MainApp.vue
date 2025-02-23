@@ -40,6 +40,7 @@ export default {
           'are you ready to <span class="word-to-learn">slay</span> this',
           'keep it up, you\'re <span class="word-to-learn">killing it</span>!',
           'yes my <span class="word-to-learn">drilla</span>',
+          'are you ready to <span class="word-to-learn">slay</span> this',
           'thats <span class="word-to-learn">fire</span> you\'ve learnt a new word!'
         ],
       },
@@ -63,6 +64,7 @@ export default {
       },
         handleNextLesson() {
             console.log('final press')
+            this.dataWordProficiency = 100;
             this.appStage ++;
         },
     },
