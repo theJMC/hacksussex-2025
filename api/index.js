@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
     res.send("Hello World");
 })
 
+app.get("/network", (req, res) => {
+    res.send(require("./network2.json"))
+})
+
 // Duo Funcs
 app.get("/get_lesson", async (req, res) => {
     const target = genz_words[Math.floor(Math.random() * genz_words.length)]
