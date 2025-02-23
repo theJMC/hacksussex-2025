@@ -205,6 +205,11 @@ body:has(.lesson-result-banner-pos) {
         text-decoration: none;
         padding: 0 2px;
     }
+
+    .lesson-answer {
+      pointer-events: none;
+      cursor: not-allowed;
+    }
 }
 
 .lesson-answer:focus-visible {

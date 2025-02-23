@@ -8,7 +8,7 @@
                 </button>
             </div>
 
-            <div class="card-view__side fill-flex flex flex-column">
+            <div class="card-view__side card-view__side-two fill-flex flex flex-column">
                 <button v-for="(card, index) in cardList" :key="index" @click="selectBoomerCard(card.cardBoomer)" :class="['card-view__card', 'fill-flex', { 'card-view__card--selected': cardSelected.cardBoomer === card.cardBoomer }, { 'card-view__card--complete': card.isComplete === true }]">
                     {{ card.cardBoomer }}
                 </button>
@@ -124,5 +124,9 @@ h3 {
     background-color: var(--light-grey);
     color: var(--dark-grey);
     pointer-events: none;
+}
+
+.card-view__side-two {
+    flex-direction: column-reverse;
 }
 </style>

@@ -22,7 +22,7 @@
         </div>
 
         <div class="lesson-answer-container flex">
-          <button v-for="(answer, index) in answers" type="button" :key="index" :class="`lesson-answer ${answer.hasBeenClicked ? 'lesson-button--wrong' : ''}`" @click="showNNotification(answer)" :aria-label="answer.text"> {{ answer.text }}</button>
+          <button v-for="(answer, index) in answers" type="button" :key="index" :class="`lesson-answer ${answer.hasBeenClicked ? 'lesson-button--wrong' : ''} ${answer.hasBeenClickedAndCorrect ? 'lesson-button--right' : ''}`" @click="showNNotification(answer)" :aria-label="answer.text"> {{ answer.text }}</button>
         </div>
 
         <Notification :type="answerState" :refreshOnRight="refreshOnRight" @next-lesson="nextLesson"/>
@@ -73,6 +73,8 @@ export default {
     showNNotification(answer) {
       if (answer.isRight != 1){
         answer.hasBeenClicked = true
+      } else {
+        answer.hasBeenClickedAndCorrect = true
       }
       
       let isRight = answer.isRight
@@ -137,5 +139,8 @@ export default {
 </script>
 
 <style>
-
+.lesson-button--right {
+  background-color: var(--pale-green);
+  color: var(--dark-green);
+}
 </style>
