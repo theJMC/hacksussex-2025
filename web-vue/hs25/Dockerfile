@@ -1,7 +1,8 @@
 
 FROM nginx:stable-alpine as production-stage
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY /etc/ssl/az-certs/sussex.thejmc.net /etc/ssl/certs/
+COPY /etc/ssl/az-certs/sussex.thejmc.net/domain.crt /etc/ssl/certs/domain.crt
+COPY /etc/ssl/az-certs/sussex.thejmc.net/privkey.key /etc/ssl/certs/privkey.key
 COPY dist/ /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
